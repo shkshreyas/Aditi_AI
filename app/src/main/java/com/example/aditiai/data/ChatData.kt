@@ -10,7 +10,7 @@ import okhttp3.Dispatcher
 import okhttp3.Response
 
 object ChatData {
-    val api_key="AIzaSyAsWB4LdUqfIZ1omqYbvtK__gochgDPCww"
+    val api_key="AIzaSyDdjbhzhrxqapqe_CqVi4muJLfabUPkqi8"
     suspend fun getResponse(prompt:String):Chat{
         val generativeModel=GenerativeModel(
             modelName = "gemini-pro", apiKey = api_key
