@@ -1,6 +1,6 @@
 package com.example.aditiai
 
-import androidx.core.view.WindowCompat
+
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,18 +25,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AddPhotoAlternate
+import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material.icons.rounded.Send
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -59,7 +55,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -79,7 +74,6 @@ import com.example.aditiai.ui.theme.AditiAITheme
 import com.example.aditiai.ui.theme.PurpleGrey40
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
-import org.w3c.dom.Text
 
 class MainActivity : ComponentActivity() {
     private val uriState = MutableStateFlow("")
@@ -127,6 +121,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
     }
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
@@ -212,13 +207,11 @@ class MainActivity : ComponentActivity() {
                                         .build()
                                 )
                             },
-                        imageVector = Icons.Rounded.AddPhotoAlternate,
+                        imageVector = Icons.Default.PhotoLibrary,
                         contentDescription = "Add Photo",
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
-                Spacer(modifier = Modifier.width(6.dp))
-
                 Spacer(modifier = Modifier.width(6.dp))
 
                 TextField(
@@ -336,4 +329,7 @@ class MainActivity : ComponentActivity() {
         }
         return null
     }
+
+
+
 }
