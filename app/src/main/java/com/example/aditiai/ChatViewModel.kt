@@ -1,11 +1,9 @@
 package com.example.aditiai
 
-import android.app.VoiceInteractor.Prompt
+
 import android.graphics.Bitmap
-import android.media.metrics.Event
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aditiai.data.Chat
 import com.example.aditiai.data.ChatData
 import kotlinx.coroutines.flow.MutableStateFlow

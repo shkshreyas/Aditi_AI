@@ -4,7 +4,12 @@
         <item name="windowSplashScreenBackground">@color/black</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/appicon</item>
         <item name="postSplashScreenTheme">@color/white</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
+
+
+
 
 
     <style name="Theme.AditiAI" parent="android:Theme.Material.Light.NoActionBar" />

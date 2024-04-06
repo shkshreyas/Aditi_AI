@@ -2,15 +2,12 @@ package com.example.aditiai.data
 
 import android.graphics.Bitmap
 import com.google.ai.client.generativeai.GenerativeModel
-import com.google.ai.client.generativeai.type.ResponseStoppedException
 import com.google.ai.client.generativeai.type.content
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.Dispatchers
-import okhttp3.Dispatcher
-import okhttp3.Response
 
 object ChatData {
-    val api_key="AIzaSyDdjbhzhrxqapqe_CqVi4muJLfabUPkqi8"
+    val api_key="AIzaSyAGjwxVLpGjQtXDKWKAGq4FyVhJAwVs6Wk"
     suspend fun getResponse(prompt:String):Chat{
         val generativeModel=GenerativeModel(
             modelName = "gemini-pro", apiKey = api_key

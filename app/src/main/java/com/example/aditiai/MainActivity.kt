@@ -75,6 +75,7 @@ import com.example.aditiai.ui.theme.PurpleGrey40
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
+
 class MainActivity : ComponentActivity() {
     private val uriState = MutableStateFlow("")
     private val imagePicker =
@@ -123,6 +124,7 @@ class MainActivity : ComponentActivity() {
         }
 
     }
+
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun ChatScreen(paddingValues: PaddingValues) {
@@ -136,19 +138,22 @@ class MainActivity : ComponentActivity() {
                 .padding(top = paddingValues.calculateTopPadding()),
             verticalArrangement = Arrangement.Bottom
         ) {
-            var anivis by remember { mutableStateOf(false) }
             var isvisible by remember { mutableStateOf(false) }
-            AnimatedVisibility(visible = !isvisible,
-                modifier= Modifier
+            AnimatedVisibility(
+                visible = !isvisible,
+                modifier = Modifier
                     .fillMaxSize()
-                    .weight(1f)) {
-                Box(modifier = Modifier
-                    .background(MaterialTheme.colorScheme.background)
-                    .fillMaxSize(), contentAlignment = Alignment.Center){
-                    val annotatedString:AnnotatedString= buildAnnotatedString {
+                    .weight(1f)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .background(MaterialTheme.colorScheme.background)
+                        .fillMaxSize(), contentAlignment = Alignment.Center
+                ) {
+                    val annotatedString: AnnotatedString = buildAnnotatedString {
                         blueGradientText(stringResource(id = R.string.app_name))
                     }
-                    Text(text=annotatedString)
+                    Text(text = annotatedString)
                 }
 
             }
@@ -162,20 +167,13 @@ class MainActivity : ComponentActivity() {
                 itemsIndexed(chatState.chatList) { index, chat ->
                     if (chat.isFromUser) {
                         isvisible = true
-                      //  anivis=true
                         UserChatItem(
                             prompt = chat.prompt, bitmap = chat.bitmap
                         )
                     } else {
-                        anivis=false
-                        AnimatedVisibility(visible = !anivis,
-                            modifier= Modifier
-                                .fillMaxSize()
-                                .weight(1f)) {
-                            LoadingAnimation()
-                        }
                         ModelChatItem(response = chat.prompt)
                     }
+
                 }
             }
             Row(
@@ -213,7 +211,6 @@ class MainActivity : ComponentActivity() {
                     )
                 }
                 Spacer(modifier = Modifier.width(6.dp))
-
                 TextField(
                     modifier = Modifier
                         .weight(1f)
@@ -240,11 +237,11 @@ class MainActivity : ComponentActivity() {
                     contentDescription = "Send prompt",
                     tint = MaterialTheme.colorScheme.primary
                 )
-
-
             }
         }
     }
+
+
 
     @Composable
     private fun AnnotatedString.Builder.blueGradientText(text: String) {
@@ -261,8 +258,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-
-
     @Composable
     fun UserChatItem(prompt: String, bitmap: Bitmap?) {
         Column(
@@ -274,7 +269,6 @@ class MainActivity : ComponentActivity() {
                         .fillMaxWidth()
                         .height(260.dp)
                         .padding(bottom = 2.dp)
-                        //.aspectRatio(2f / 3f)
                         .clip(RoundedCornerShape(12.dp)),
                     contentDescription = "image",
                     contentScale = ContentScale.FillBounds,
@@ -293,6 +287,7 @@ class MainActivity : ComponentActivity() {
             )
         }
     }
+
     @Composable
     fun ModelChatItem(response: String) {
         Column(
@@ -314,6 +309,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
     @Composable
     private fun getBitmap(): Bitmap? {
         val uri = uriState.collectAsState().value
@@ -329,7 +325,4 @@ class MainActivity : ComponentActivity() {
         }
         return null
     }
-
-
-
 }
